@@ -1,0 +1,108 @@
+#include <iostream>
+using namespace std;
+int max(int a, int b, int c)
+{
+    return  (a > b) ? (a > c ? a : c) : (b > c ? b : c);
+}
+int min(int a, int b,int c)
+{
+    return (a < b) ? (a < c ? a : c) : (b < c ? b : c);
+}
+
+
+int avg(int a, int b,int c) 
+{
+    return (a + b + c) / 3;
+}
+
+int main()
+{
+    const int MAX_TEMP = 50;
+    const int max_distance=100;
+    int temp[3];
+    int distance[3];
+    int light[3];
+    int mt;
+    int nt;
+    int avigt;
+    int md;
+    int nd;
+    int avigd;
+    int ml;
+    int nl;
+    int avigl;
+
+
+
+    for(int i=0;i<3;i++)
+    {
+    
+
+        cout<<"Enter the temperature "<<i + 1<<": ";
+        cin>>temp[i];
+
+
+       if(temp[i]>MAX_TEMP || temp[i]<0)
+     {
+         cout<<"Invalid temperature "<<endl;
+     }
+        
+
+        if(temp[i]>40)
+        {
+        cout<<"Too hot to handle"<<endl;
+        }
+        else if(temp[i]>10 && temp[i]<40)
+        {
+            cout<<"Optimal temperature"<<endl;
+        }
+        else if(temp[i]<10)
+        {
+            cout<<"Too cold to handle"<<endl;
+        }
+
+          cout<<"Enter the distance "<<i+1<<": ";
+        cin>>distance[i];
+     
+       if(distance[i]>max_distance|| distance[i]<0)
+     {
+         cout<<"Invalid distance"<<endl;
+     }
+     
+
+        cout<<"Enter the light intensity "<<i+1<<": ";
+        cin>>light[i];
+
+    }
+mt = max(temp[0],temp[1],temp[2]);
+nt = min(temp[0],temp[1],temp[2]);
+avigt = avg(temp[0],temp[1],temp[2]);
+
+md= max(distance[0],distance[1],distance[2]);
+nd = min(distance[0],distance[1],distance[2]);
+avigd = avg(distance[0],distance[1],distance[2]);
+
+ml= max(light[0],light[1],light[2]);
+nl= min(light[0],light[1],light[2]);
+avigl = avg(light[0],light[1],light[2]);
+
+cout<<endl;
+
+cout<<"Maximum value of temperatures: "<<mt<<endl;
+cout<<"Minimum value of temperatures: "<<nt<<endl;
+cout<<"Average value of temperatures: "<<avigt<<endl;
+
+cout<<endl;
+
+cout<<"Maximum value of Distance: "<<md<<endl;
+cout<<"Minimum value of Distance: "<<nd<<endl;
+cout<<"Average value of Distance: "<<avigd<<endl;
+
+cout<<endl;
+
+cout<<"Maximum value of Light Intensity: "<<ml<<endl;
+cout<<"Minimum value of Light Intensity: "<<nl<<endl;
+cout<<"Average value of Light Intensity: "<<avigl<<endl;
+
+return 0;
+}
