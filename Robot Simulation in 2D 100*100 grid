@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std;
+
+class AutonomousVehicle 
+{
+  int x,y;
+  char N,S,E,W;
+  public:
+  void getvalue(void);
+  void turn(char dir);
+  void getPosition(void);
+};
+
+void AutonomousVehicle :: getvalue(void)
+{
+    back:
+    cout<<"Enter the value of X: "<<endl;
+    cin>>x;
+    cout<<"Enter the value of Y: "<<endl;
+    cin>>y;
+    if(x>100 || x<0 || y>100 || y<0)
+    {
+        cout<<"Pls enter valid value......😭😭😭😭😭"<<endl;
+        goto back;
+    }
+}
+void AutonomousVehicle :: turn(char dir)
+{
+    again:
+
+
+    switch (dir)
+    {
+      case 'N':
+      if(y<=100)
+      y++;
+      break;
+
+      case 'S':
+      if(y>0)
+      y--;
+      break;
+
+      case 'E':
+      if(x<=100)
+      x++;
+      break;
+
+      case 'W':
+      if(x>0)
+      x--;
+      break;
+
+      default:
+      cout<<"Pls enter the correct direction.............😭😭😭😭😭😭😭"<<endl;
+      goto again; 
+
+    }
+}
+
+void AutonomousVehicle :: getPosition(void)
+{   
+    cout<<"The position of robot you gave is: ("<<x<<","<<y<<")"<<endl;
+}
+
+int main() 
+
+{
+    AutonomousVehicle bittu;
+    bittu.getvalue();
+    char dir;
+    cout << "Enter the direction (N/S/E/W): ";
+    cin >> dir;
+    bittu.turn(dir);
+    bittu.getPosition();
+
+return 0;
+
+}
