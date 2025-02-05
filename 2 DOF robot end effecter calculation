@@ -1,0 +1,64 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class robot
+{  int angle1;
+   int angle2;
+   float theta1;
+   float theta2;
+   public:
+   int l1 = 10;
+   int l2= 20;
+   float x,y;
+   void validangle(void);
+   void robotposition(void);
+   void resetAngles(int step=3) 
+{
+        if (step == 0) {
+            cout << "Angles reset to default (0,0,0)\n";
+            return;
+        }
+        angle1 = angle2 = 0;
+        theta1 = theta2  = 0;
+        resetAngles(step - 1); // Recursive call
+    }
+};
+
+void robot::validangle(void)
+{
+    back:
+    cout<<"Enter the angular displacement of link 1: "<<endl;
+    cin>>angle1;
+    cout<<"Enter the angular displacement of link 2: "<<endl;
+    cin>>angle2;
+    if(angle1>180 || angle1<0  ||  angle2>180 || angle2<0)
+    {
+        cout<<"Pls enter valid angle"<<endl;
+        goto back;
+    }
+    else
+    {
+        theta1 = (angle1*3.14)/180;
+        theta2 = (angle2*3.14)/180;
+    }
+
+}
+
+void robot :: robotposition(void)
+{
+     x = l1*cos(theta1) + l2*cos(theta1 + theta2);
+     y = l1*sin(theta1) + l2*sin(theta1 + theta2);
+     cout<<"the End effector position for given angles is: ("<<x<<","<<y<<")"<<endl;
+}
+
+int main() 
+
+{ 
+    robot tommy;
+    tommy.validangle();
+    tommy.robotposition();
+    tommy.resetAngles();
+
+return 0;
+}
