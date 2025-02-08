@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+int t;
+int p;
+float r;
+
+cout<<"Enter the Time Period (In years): "<<endl;
+cin>>t;
+cout<<"Enter the Principal Amount(In thousands): "<<endl;
+cin>>p;
+cout<<"Enter the Rate of Interest(In percentage): "<<endl;
+cin>>r;
+
+float si=(p*r*t)/100;
+cout<<"The Simple Interest is: "<<si<<endl;
+
+float ci = p * (pow((1 + r / 100), t) - 1);
+cout<<"The Compound Interest is: "<<ci<<endl;
+
+return 0;
+}
