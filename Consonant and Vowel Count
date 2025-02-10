@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cctype>
+using namespace std;
+
+void countVowelsConsonants(char *str, int &vowels, int &consonants)
+{
+   vowels = 0;
+   consonants = 0;
+
+   char * ptr = str;
+
+   while(*ptr != '\0')
+   {
+      char ch = tolower(*ptr);
+      if(isalpha(ch))
+      {
+         if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' ||ch == 'u')
+         {
+            vowels ++;
+         }
+         else
+         {
+            consonants ++;
+         }
+      }
+      ptr ++;
+   }
+}
+int main() 
+{
+   int vowels,consonants;
+   char* str = new char[100];
+
+   cout<<"Enter a Word: "<<endl;
+   cin.getline(str, 100);
+
+   countVowelsConsonants(str, vowels, consonants);
+    
+   cout<<"Number of Vowels: "<<vowels<<endl;
+   cout<<"Number of Consonants: "<<consonants<<endl;
+
+   delete[] str; // Free allocated memory
+return 0;
+}
