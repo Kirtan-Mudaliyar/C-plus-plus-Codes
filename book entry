@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+class book
+{
+   string book_title;
+   int bookid;
+
+   public:
+   static int total_books;
+
+   void askdetail (void)
+   {
+      cout<<"Enter the name of book "<<total_books+1<<": "<<endl;
+      cin>>book_title;
+
+      cout<<"Enter the id of book "<<total_books+1<<": "<<endl;
+      cin>>bookid;
+
+      total_books ++;
+   }
+
+   void displaydetail(void)
+   {
+      cout<<"The name of book you entered "<<book_title<<": "<<endl;
+      cout<<"The id of book you entered "<<bookid<<": "<<endl;
+   };
+
+   static void totalbooks(void)
+   {
+      cout<<"The total number of books enlisted: "<<total_books<<endl;
+   }
+
+}; 
+
+int book :: total_books;
+
+int main()
+{
+   book b1,b2,b3;
+
+   b1.askdetail();
+   b2.displaydetail();
+   book :: totalbooks();
+
+   cout<<endl;
+
+   b2.askdetail();
+   b2.displaydetail();
+   book :: totalbooks();
+
+   cout<<endl;
+
+   b3.askdetail();
+   b3.displaydetail();
+   book :: totalbooks();
+
+return 0;
+}
