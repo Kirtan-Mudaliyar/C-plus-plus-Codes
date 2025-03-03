@@ -1,0 +1,94 @@
+#include <iostream>
+using namespace std;
+
+class SmartDevice
+{
+   string deviceName;
+   string status;
+
+   public:
+   void turnOn()
+   {
+       status = "ON";
+   }
+   void turnOff()
+   {
+       status = "OFF";
+   }
+   string getStatus()
+   {
+       return status;
+   }
+};
+
+class SmartLight: public SmartDevice
+{
+    int brightness;
+    public:
+    void setBrightness(void)
+    {
+        cout<<"Brightness set to: "<<endl;
+        cin>>brightness;
+
+        try
+        {
+            if(brightness<0 || brightness>100)
+            {
+                throw "Invalid brightness";
+            }
+        }
+        catch(const char* msg)
+        {
+            cout<<msg<<endl;
+        }
+    }
+    int getBrightness()
+    {
+        return brightness;
+    }
+};
+
+class Smartthermostat: public SmartDevice
+{
+   int temperature;
+    public:
+    void settemperature(void)
+    {
+        cout<<"Temperature set to: "<<endl;
+        cin>>temperature;
+
+        try
+        {
+            if(temperature<10 || temperature>35)
+            {
+                throw "Invalid temperature";
+            }
+        }
+        catch(const char* msgtemp)
+        {
+            cout<<msgtemp<<endl;
+        }
+    }
+    int gettemperature()
+    {
+        return temperature;
+    }
+};
+
+
+int main()
+{
+   SmartLight sl;
+   Smartthermostat st;
+   sl.turnOn();
+   sl.setBrightness();
+   cout<<"Brightness is: "<<sl.getBrightness()<<endl;
+   sl.turnOff();
+
+   st.turnOn();
+   st.settemperature();
+   cout<<"Temperature is: "<<st.gettemperature()<<endl;
+   st.turnOff();
+   
+return 0;
+}
